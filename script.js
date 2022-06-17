@@ -4,7 +4,10 @@ const updateLSdata = () => {
     const textareadata = document.querySelectorAll('textarea');
     const notes = [];
     textareadata.forEach((element) => {
-        return notes.push(element.value);
+        if(element.value) {
+            notes.push(element.value);
+        }
+        return notes;
     });
 
     localStorage.setItem('notes',JSON.stringify(notes));
@@ -16,7 +19,7 @@ function takenewnote (text = '')
     note.classList.add("note"); 
     const htmlData = ` 
     <div id="operation">
-        <button id="edit" title="edit/save"><i class="far fa-edit"></i></button>
+        <button id="edit" title="edit/save"><i class=" icon ${text ? "far fa-edit" : "far fa-save"}"></i></button>
         <button id="delete" title="delete"><i class="fas fa-trash"></i></button>
     </div>
     <textarea class="${text ? "hidden" : ""}"></textarea> 
@@ -28,6 +31,8 @@ function takenewnote (text = '')
     const notesdelete = note.querySelector('#delete');
     const notearea = note.querySelector('#notearea');
     const textarea = note.querySelector('textarea'); 
+    const icon = note.querySelector('.icon');
+    console.log("icon",icon)
 
     notesdelete.addEventListener('click',()=>{
         note.remove();
@@ -39,7 +44,15 @@ function takenewnote (text = '')
 
     notesedit.addEventListener('click',()=>{
         notearea.classList.toggle("hidden");
-        textarea.classList.toggle("hidden"); 
+        textarea.classList.toggle("hidden");
+        if(icon.classList.contains("fa-save")) {
+            icon.classList.add("fa-edit");
+            icon.classList.remove("fa-save");
+        }
+        else {
+            icon.classList.remove("fa-edit");
+            icon.classList.add("fa-save");
+        } 
     });
 
     textarea.addEventListener('change',(event)=>{

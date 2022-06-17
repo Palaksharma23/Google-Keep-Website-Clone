@@ -64,7 +64,20 @@
     float: right;
     margin: 2%;
     width: fit-content;
-    font-size: 2vw; 
+    font-size: 1.2vw;
+    padding: 0.6vw; 
+    background-color: #f7d05d;
+    border-radius: 10%;
+}
+
+#operation button:hover {
+    float: right;
+    margin: 2%;
+    width: fit-content;
+    font-size: 1.2vw;
+    padding: 0.6vw; 
+    background-color: white;
+    color: #f7d05d;
 }
 
 .notearea
@@ -73,17 +86,19 @@
     width: 90%;
     height: 68%; 
     margin: 4%; 
-    overflow-y: scroll;
+    overflow-y: auto;
     margin-bottom: 8%;
 }
 
 textarea
 {
-    margin: 4%;
-    width: 90%;
+    margin: 2%;
+    width: 92%;
     height: 68%;
-    overflow-y: scroll;
+    overflow-y: auto;
     margin-bottom: 8%;
+    resize: none; 
+    padding: 2%;
 }
 
 #grid
